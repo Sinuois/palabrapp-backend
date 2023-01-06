@@ -1,10 +1,11 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 
-const { validarCampos } = require('../middlewares/validar-campos')
+const { validarCampos } = require('../middlewares/validar-campos') 
 
 const { 
-    palabrasGet, 
+    palabrasGet,
+    palabraGet, 
     palabrasPut, 
     palabrasPost, 
     palabrasDelete} = require('../controllers/palabras');
@@ -12,6 +13,8 @@ const {
 const router = Router();
 
 router.get('/', palabrasGet);
+
+router.get('/:id', palabraGet);
 
 router.put('/:id', [
     check('id', 'No es un ID válido.').isMongoId(),
